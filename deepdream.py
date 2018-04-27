@@ -328,7 +328,7 @@ session = tf.InteractiveSession(graph=model.graph)
 
 picNum = 1
 
-while picNum < 19:
+while picNum < 22:
     print("IMAGE NUMBER: ", picNum)
     layer_num = 1
     while layer_num < 12:
