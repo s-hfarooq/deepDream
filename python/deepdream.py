@@ -207,7 +207,6 @@ def optimize_image(layer_tensor, image,
     show_gradient: Plot the gradient in each iteration.
     """
 
-    # Copy the image so we don't overwrite the original image.
     img = image.copy()
 
     print("Processing image: ", end="")
@@ -327,7 +326,7 @@ session = tf.InteractiveSession(graph=model.graph)
 
 
 
-picNum = 18
+picNum = 1
 
 while picNum < 19:
     print("IMAGE NUMBER: ", picNum)
