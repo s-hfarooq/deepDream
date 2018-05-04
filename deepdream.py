@@ -333,15 +333,16 @@ session = tf.InteractiveSession(graph=model.graph)
 
 picTotal = 0
 
-list_dir = os.listdir("input/")
+list_dir = os.listdir("input/") #Finds out how many images are in the input folder
 for file in list_dir:
-    if file.endswith(".jpg"):
+    if file.endswith(".jpg"): #Only accepts .jpg files
         picTotal += 1
 
 print("PICTOTAL = ", picTotal)
 
-
 picNum = 1
+
+
 while picNum <= picTotal:
     print("IMAGE NUMBER: ", picNum)
     layer_num = 1
@@ -358,10 +359,10 @@ while picNum <= picTotal:
                            show_gradient=True)
 
         if layer_num == 1:
-            if not os.path.exists("output/{}".format(picNum)):
+            if not os.path.exists("output/{}".format(picNum)): #Creates folder for output if it doesn't exist
                 os.makedirs("output/{}".format(picNum))
 
-        save_image(img_result, filename='output/{}/img{}_L{}.jpg'.format(picNum, picNum, layer_num))
+        save_image(img_result, filename='output/{}/img{}_L{}.jpg'.format(picNum, picNum, layer_num)) #Saves final image
 
         layer_num += 1
     picNum += 1
