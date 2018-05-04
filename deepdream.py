@@ -1,10 +1,13 @@
-import matplotlib.pyplot as plt
 import tensorflow as tf
+import matplotlib.pyplot as plt
 import numpy as np
 import random
 import math
 import PIL.Image
 from scipy.ndimage.filters import gaussian_filter
+import glob
+import sys
+import os
 
 
 import inception5h
@@ -326,9 +329,20 @@ session = tf.InteractiveSession(graph=model.graph)
 
 
 
-picNum = 1
 
-while picNum < 23:
+
+picTotal = 0
+
+list_dir = os.listdir("input/")
+for file in list_dir:
+    if file.endswith(".jpg"):
+        picTotal += 1
+
+print("PICTOTAL = ", picTotal)
+
+
+picNum = 1
+while picNum <= picTotal:
     print("IMAGE NUMBER: ", picNum)
     layer_num = 1
     while layer_num < 12:
@@ -342,6 +356,10 @@ while picNum < 23:
         img_result = optimize_image(layer_tensor, image,
                            num_iterations=10, step_size=6.0, tile_size=400,
                            show_gradient=True)
+
+        if layer_num == 1:
+            if not os.path.exists("output/{}".format(picNum)):
+                os.makedirs("output/{}".format(picNum))
 
         save_image(img_result, filename='output/{}/img{}_L{}.jpg'.format(picNum, picNum, layer_num))
 
