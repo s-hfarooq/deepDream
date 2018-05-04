@@ -39,7 +39,7 @@ Output of layer 2
 ![output2](output/2/img2_L2.jpg)
 
 
-### Image
+### Image 14 (320x240)
 
 Input:
 
